@@ -11,6 +11,8 @@ using namespace std;
 
 class Solution {
   public:
+
+/*********Recursive approach**********
     int numTrees(int n) {
       storedUniqueBst.resize(n, 0);
       storedUniqueBst[0] = storedUniqueBst[1] = 1;
@@ -32,6 +34,21 @@ class Solution {
       }  
       return storedUniqueBst[n];
     }
+*********Recursive approach end********/
+
+/************Iterative approach start******/
+  int numTrees(int n) {
+    vector<int> storedUniqueBst(n + 1, 0);
+    storedUniqueBst[0] = storedUniqueBst[1] = 1;
+    for (int i = 2; i <= n; i++) {
+      for (int j = 1; j <= i; j++) {
+        storedUniqueBst[i] += storedUniqueBst[j - 1]*storedUniqueBst[i - j];
+      }
+    }  
+    return storedUniqueBst[n];
+  }
+/************Iterative approach end******/
+
 };
 
 int main(int argc, const char * argv[]) {
