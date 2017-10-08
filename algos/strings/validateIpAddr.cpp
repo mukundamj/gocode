@@ -11,10 +11,8 @@ class Solution {
       size_t pos1 = 0;
       size_t pos2; 
       int chunk = 0;
-      int count = 0;
       if (size >= 15 && size <= 39) {
-        while (count <= 9) {
-          count++;
+        while (chunk <= 8) {
           pos2 = IP.find(':', pos1);
           string str = IP.substr(pos1, pos2 - pos1);
           if (!(str.size() >= 1 && str.size() <= 4)) break;
@@ -30,15 +28,13 @@ class Solution {
           if (pos2 == string::npos) break;
           pos1 = pos2 + 1;
         }
-        if (chunk == 8 && count == 8) return ret = "IPv6";
+        if (chunk == 8 && pos2 == string::npos) return ret = "IPv6";
       }
 
       pos1 = 0;
       chunk = 0;
-      count = 0;
       if (size >= 7 && size <= 15) {
-        while (count <= 5) {
-          ++count;
+        while (chunk <= 4) {
           pos2 = IP.find('.', pos1);
           string str = IP.substr(pos1, pos2 - pos1);
           if (!(str.size() >= 1 && str.size() <= 3))  break;
@@ -58,7 +54,7 @@ class Solution {
           if (pos2 == string::npos) break;
           pos1 = pos2 + 1;
         }
-        if (chunk == 4 && count == 4) return ret = "IPv4";
+        if (chunk == 4 && pos2 == string::npos) return ret = "IPv4";
       }
 
       return ret;
