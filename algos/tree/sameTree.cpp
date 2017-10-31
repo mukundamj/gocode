@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "sha256.h"
 
 using namespace std;
 
@@ -13,6 +14,8 @@ struct TreeNode {
 class Solution {
   public:
     bool isSameTree(TreeNode* p, TreeNode* q); 
+  private:
+    string _merkle(TreeNode *);
 };
 
 //Simple recursive approach
@@ -25,6 +28,29 @@ bool Solution::isSameTree(TreeNode* s, TreeNode* t) {
   return false;
 }
 */
+
+//Using Merkel tree approach
+bool Solution::isSameTree(TreeNode* s, TreeNode* t) {
+  if (!s && !t) return true;
+  if (s && t) {
+    string merkleHashOfs = _merkle(s);
+    cout << "hash of s " << merkleHashOfs << endl;
+    string merkleHashOft = _merkle(t);
+    cout << "hash of t " << merkleHashOft << endl;
+    return (merkleHashOfs == merkleHashOft); 
+  }
+  return false;
+}
+
+string Solution::_merkle(TreeNode * n) {
+  if (!n) return string("#"); 
+  SHA256 sha256;
+  string merkleLeft = _merkle(n->left); 
+  string merkleRight = _merkle(n->right); 
+  string nodeValue = to_string(n->val);
+  string concatenated = merkleLeft + nodeValue + merkleRight;
+  return sha256(concatenated);
+}
 
 int main(int argc, const char * argv[]) {
   Solution S;
