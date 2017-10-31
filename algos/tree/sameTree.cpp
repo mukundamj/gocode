@@ -29,15 +29,13 @@ bool Solution::isSameTree(TreeNode* s, TreeNode* t) {
 }
 */
 
-//Using Merkel tree approach
+//Using Merkle tree approach
 bool Solution::isSameTree(TreeNode* s, TreeNode* t) {
   if (!s && !t) return true;
   if (s && t) {
-    string merkleHashOfs = _merkle(s);
-    cout << "hash of s " << merkleHashOfs << endl;
-    string merkleHashOft = _merkle(t);
-    cout << "hash of t " << merkleHashOft << endl;
-    return (merkleHashOfs == merkleHashOft); 
+    //cout << "hash of s " << _merkle(s) << endl;
+    //cout << "hash of t " << _merkle(t) << endl;
+    return (_merkle(s) == _merkle(t)); 
   }
   return false;
 }
@@ -45,11 +43,7 @@ bool Solution::isSameTree(TreeNode* s, TreeNode* t) {
 string Solution::_merkle(TreeNode * n) {
   if (!n) return string("#"); 
   SHA256 sha256;
-  string merkleLeft = _merkle(n->left); 
-  string merkleRight = _merkle(n->right); 
-  string nodeValue = to_string(n->val);
-  string concatenated = merkleLeft + nodeValue + merkleRight;
-  return sha256(concatenated);
+  return sha256(_merkle(n->left) + to_string(n->val) + _merkle(n->right));
 }
 
 int main(int argc, const char * argv[]) {
