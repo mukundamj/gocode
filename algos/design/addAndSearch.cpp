@@ -53,7 +53,7 @@ void WordDictionary::addWord(string word) {
 }
 
 bool WordDictionary::search(string word) {
-  cout << "Search word is " << word << endl;
+  //cout << "Search word is " << word << endl;
   return _find(word.c_str(), root);
 }
 
@@ -62,7 +62,7 @@ bool WordDictionary::_find(const char *w, TrieNode* root) {
     if (root->isEndOfWord) return true;    
     return false;
   }
-  cout << "Search word inside find is " << w << endl;
+  //cout << "Search word inside find is " << w << endl;
   if (*w == '.') {
     for (int i = 0; i < 26; i++) {
       if (root->next[i] == NULL) continue;
@@ -70,7 +70,7 @@ bool WordDictionary::_find(const char *w, TrieNode* root) {
     }
   }
   else {
-    return _find(w+1, root->next[*w - 'a']);
+    return (root->next[*w - 'a'] != NULL && _find(w+1, root->next[*w - 'a']));
   }
 }
 
@@ -87,26 +87,24 @@ void WordDictionary::_freeWordDictionary(TrieNode* r) {
 
 int main(int argc, const char* argv[]) {
   WordDictionary dict;
-  string keyWord, word;
-  while (1) {
-    cout << "Enter keyWord" << endl;
-    cin >> keyWord;
-    if (keyWord != "add" && keyWord != "search") {
-      cout << "keyWord should be add or search" << endl;
-      continue;
-    }
-    if (keyWord == "add") {
-      cout << "Enter the word to be added" << endl;
-      cin >> word;
-      cout << "Adding " << word << " to dictionary" << endl;
-      dict.addWord(keyWord);
-    }
-    else if (keyWord == "search") {
-      cout << "Enter the word to be searched" << endl;
-      cin >> word;
-      cout << "Does the word exists in dictionary : " << dict.search(word) << endl;
-    }
-  }
+  dict.addWord("abcd");
+  dict.addWord("abcdefg");
+  dict.addWord("bcd");
+  dict.addWord("bcdefg");
+  dict.addWord("c");
+  dict.addWord("d");
+  dict.addWord("ab");
+  cout << "a..e exists : " << dict.search("a..e") << endl;
+  cout << "abcd exists : " << dict.search("abcd") << endl;
+  cout << ".bcd exists : " << dict.search(".bcd") << endl;
+  cout << "..cd exists : " << dict.search("..cd") << endl;
+  cout << "...d exists : " << dict.search("...d") << endl;
+  cout << ".... exists : " << dict.search("....") << endl;
+  cout << ".bc. exists : " << dict.search(".bc.") << endl;
+  cout << ".. exists : " << dict.search("..") << endl;
+  cout << ". exists : " << dict.search(".") << endl;
+  cout << "..... exists : " << dict.search(".....") << endl;
+  cout << "ab exists : " << dict.search("ab") << endl;
   return 0;
 }
 
