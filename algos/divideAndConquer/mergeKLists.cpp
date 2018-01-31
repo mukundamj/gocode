@@ -16,16 +16,28 @@ class Solution {
     ListNode* _merge(ListNode*, ListNode*);
 };
 
+// High time complexity: n x m. Where n = number of lists and m = average number of elements in each list
+//ListNode* Solution::mergeKLists(vector<ListNode*>& lists) {
+//  if (!lists.size()) return NULL;
+//  vector<ListNode*>::iterator it = lists.begin();
+//  ListNode *head1 = *it;
+//  ListNode *head2 = NULL;
+//  while (++it != lists.end()) {
+//    head2 = *it; 
+//    head1 = _merge(head1, head2);
+//  }
+//  return head1;
+//}
+
+//Low time complexity: mlog(n). Where n = number of lists and m = average number of elements in each list
 ListNode* Solution::mergeKLists(vector<ListNode*>& lists) {
-  if (!lists.size()) return NULL;
-  vector<ListNode*>::iterator it = lists.begin();
-  ListNode *head1 = *it;
-  ListNode *head2 = NULL;
-  while (++it != lists.end()) {
-    head2 = *it; 
-    head1 = _merge(head1, head2);
+  if (lists.size() == 0) return NULL;
+  while (lists.size() != 1) {
+    lists.push_back(_merge(lists[0], lists[1]));
+    lists.erase(lists.begin());
+    lists.erase(lists.begin());
   }
-  return head1;
+  return *lists.begin();
 }
 
 ListNode* Solution::_merge(ListNode* head, ListNode* head2) {
