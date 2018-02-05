@@ -46,7 +46,7 @@ void Solution::merge_sort(vector<int>& result, vector<int>& indices, vector<int>
 
 vector<int> Solution::countSmaller(vector<int>& nums) {
   vector<int> result(nums.size(), 0);
-  vector<int> indices(nums.size(), 0);
+  vector<int> indices(nums.size(), 0); //Index is sorted instead of the actual array so that while sorting counts can be updated in the results array
   iota(indices.begin(), indices.end(), 0);
   merge_sort(result, indices, nums, 0, nums.size() - 1);
   return result;
