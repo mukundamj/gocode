@@ -66,8 +66,9 @@ bool WordDictionary::_find(const char *w, TrieNode* root) {
   if (*w == '.') {
     for (int i = 0; i < 26; i++) {
       if (root->next[i] == NULL) continue;
-      return _find(w+1, root->next[i]);
+        if (_find(w+1, root->next[i])) return true;
     }
+    return false;
   }
   else {
     return (root->next[*w - 'a'] != NULL && _find(w+1, root->next[*w - 'a']));
