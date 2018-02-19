@@ -6,17 +6,16 @@ using namespace std;
 class Solution {
   public:
     int rob(vector<int>& nums) {
+      if (nums.size() == 0) return 0;
       nums.push_back(0);
       nums.push_back(0);
-      int end = nums.size() - 1;
-      if (end >= 2) {
-        nums[end - 2] += nums[end];
-        for (int i = end - 3; i >= 0; i--) {
-          nums[i] += (nums[i + 2] > nums[i + 3] ? nums[i + 2] : nums[i + 3]);
-        } 
+      nums[2] = nums[2] + nums[0];
+      for (int i = 3; i < nums.size(); i++) {
+        nums[i] += (nums[i - 2] > nums[i - 3] ? nums[i - 2] : nums[i - 3]);
       }
-      return nums[0] > nums[1] ? nums[0] : nums[1]; 
+      return nums[nums.size() - 1];
     }
+
 };
 
 int main(int argc, const char * argv[]) {
@@ -25,4 +24,3 @@ int main(int argc, const char * argv[]) {
   cout << S.rob(nums) << endl;
   return 0;
 }
-
