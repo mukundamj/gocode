@@ -19,11 +19,11 @@ class Solution {
 
 TreeNode* Solution::buildTree(vector<int>& preorder, vector<int>& inorder) {
   int i = 0, j = 0;
-  TreeNode* root = new TreeNode(0xefffffff); //the value is set to some high value so that it doesn't inadvertantly match any if conditions inside while loop
+  TreeNode* root = new TreeNode(0xefffffff); //can also use INT_MAX as value. The value is set to some high value so that it doesn't inadvertantly match any if conditions inside while loop
   TreeNode* tbdRoot = NULL, * returnRoot = root;
   stack<TreeNode*> preorderStack;
   preorderStack.push(root);
-  while (j < inorder.size()) {
+  while (j < inorder.size()) {  //can also use the condition i < preorder.size()
     cout << inorder[j] << " ";
     if (preorderStack.top()->val == inorder[j]) {
       tbdRoot = preorderStack.top();
