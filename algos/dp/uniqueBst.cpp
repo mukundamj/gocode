@@ -3,8 +3,12 @@
 
 using namespace std;
 
-/*The logic implemented here is as per the leet code discussion using dynamic programming approach*/
 /*
+Given n, how many structurally unique BST's (binary search trees) that store values 1...n?
+For example,
+Given n = 3, there are a total of 5 unique BST's.
+
+The logic implemented here is as per the leet code discussion using dynamic programming approach
   The formula to find unique BSTs is as below
   G(n) = G(0) * G(n-1) + G(1) * G(n-2) + … + G(n-1) * G(0)
 */
