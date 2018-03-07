@@ -11,12 +11,12 @@ class Solution {
 //Given a string, find the length of the longest substring without repeating characters.
 int Solution::lengthOfLongestSubstring(string s) {
   if (s.size() == 0) return 0;
-  unordered_map<char, bool> sMap;
+  unordered_set<char> sMap;
   int max = 1, begin = 0, end = 1;
-  sMap[s[begin]] = true;
+  sMap.insert(s[begin]);
   while (end < s.size()) {
     if (sMap.find(s[end]) == sMap.end()) {
-      sMap[s[end++]] = true;
+      sMap.insert(s[end++]);
     }  
     else {
       max = max >= (end - begin) ? max : (end - begin);
@@ -35,7 +35,7 @@ int Solution::lengthOfLongestSubstring(string s) {
 
 int main(int argc, const char* argv[]) {
   Solution S;
-  string s = "abcbb";
+  string s = "abcdefc";
   cout << "Length of longest substring is " << S.lengthOfLongestSubstring(s) << endl;
   return 0;
 }
