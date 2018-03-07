@@ -8,7 +8,7 @@ class Solution {
   public:
     int lengthOfLongestSubstring(string );
 };
-
+//Given a string, find the length of the longest substring without repeating characters.
 int Solution::lengthOfLongestSubstring(string s) {
   if (s.size() == 0) return 0;
   unordered_map<char, bool> sMap;
