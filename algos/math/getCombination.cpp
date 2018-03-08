@@ -1,24 +1,33 @@
 #include <iostream>
 #include <vector>
 
+//I repliied this as a solution to leetcode question
 using namespace std;
 
 class Solution {
   public:
-    vector<string> getCombinations(string &s); 
+    vector<string> getCombinations(string &);
+    void getCombinations(string &, int, int, vector<string> &);
 };
 
 vector<string> Solution::getCombinations(string &s) {
   vector<string> combinations;
-  int start = 0, end = s.size() - 1;
-  for (; start <= end; start++) {
-    string temp = "";
-    for (int i = start; i <= end; i++) {
-      temp.push_back(s[i]);
-      combinations.push_back(temp);
-    }
-  }
+  getCombinations(s, 0, (s.size() - 1), combinations);
   return combinations;
+}
+
+void Solution::getCombinations(string &s, int start, int end, vector<string> &combinations) {
+  if (start == end) {
+    combinations.push_back("");
+    combinations.push_back(s.substr(start, 1));
+    return;
+  }
+  getCombinations(s, start + 1, end, combinations);
+  int size = combinations.size();
+  for (int i = 0; i < size; i++) {
+    combinations.push_back(s[start] + combinations[i]);
+  }
+  return;
 }
 
 int main(int argc, const char * argv[]) {
@@ -35,4 +44,3 @@ int main(int argc, const char * argv[]) {
   cout << endl;
   return 0;
 }
-
