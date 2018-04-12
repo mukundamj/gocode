@@ -51,9 +51,9 @@ class Solution {
 
   private:
     int _findDiff(const char * A, const char * B) {
-      int secondsA = (((A[0] - '0') * 10 + (A[1] - '0')) * 60) + ((A[3] - '0') * 10 + (A[4] - '0'));
-      int secondsB = (((B[0] - '0') * 10 + (B[1] - '0')) * 60) + ((B[3] - '0') * 10 + (B[4] - '0'));
-      int delta = (secondsA - secondsB);
+      int minutesA = (((A[0] - '0') * 10 + (A[1] - '0')) * 60) + ((A[3] - '0') * 10 + (A[4] - '0'));
+      int minutesB = (((B[0] - '0') * 10 + (B[1] - '0')) * 60) + ((B[3] - '0') * 10 + (B[4] - '0'));
+      int delta = (minutesA - minutesB);
       return  delta > 720 ? (1440 - delta) : delta;
     }
 
