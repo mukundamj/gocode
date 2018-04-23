@@ -25,11 +25,10 @@ vector<string> Solution::topKFrequent(vector<string>& words, int k) {
   map<string, int> words_count_map;
   vector<pair<string, int>> words_count_vec; 
   vector<string> res;
+
+  //Time complexity of this for loop in nlog(n)
   for (auto s : words) {
-    if (words_count_map.find(s) == words_count_map.end()) {
-      words_count_map[s] = 1; 
-    }
-    else words_count_map[s]++;
+    words_count_map[s]++;
   }
 
   for (auto p : words_count_map) {
@@ -39,9 +38,11 @@ vector<string> Solution::topKFrequent(vector<string>& words, int k) {
   //Sorting the vector with custom comparator class
   //The time required to run when compare class is used is high compared to
   //using lambda function
+  //Time complexity of this sorting process in nlog(n)
   //sort (words_count_vec.begin(), words_count_vec.end(), comparePairs());
 
   //Sorting the vector using custom comparator lambda function
+  //Time complexity of this sorting process in nlog(n)
   sort
   (
     words_count_vec.begin(), words_count_vec.end(), 
@@ -58,8 +59,32 @@ vector<string> Solution::topKFrequent(vector<string>& words, int k) {
   for (int i = 0; i < k; i++) {
     res.push_back(words_count_vec[i].first); 
   }
-  
+
   return res;
+
+  ////As an alternate approach bucket sort can be used which has lesser time
+  ////complexity than nlong(n). This solution was found in leet code
+
+  //vector<vector<string>> bucket(words.size());
+  //for (auto it : words_count_map) {
+  //  //since the map STL sorts its values by keys when the bucket is inserted
+  //  //with values it will be in sorted order
+  //  bucket[it.second].push_back(it.first);
+  //}
+  //cout << "print done" << endl;
+  //
+  //for (int i = (int)bucket.size() - 1; k > 0 && i >= 0; i--) {
+  //  if (bucket[i].empty())
+  //    continue;
+  //  int n = min(k, (int)bucket[i].size());
+  //  //since the bucket has already sorted keys when there is no need to sort
+  //  //among words having same frequency 
+  //  res.insert(res.end(), bucket[i].begin(), bucket[i].begin() + n);
+  //  k -= n;
+  //}
+  //
+  //return res;
+  
 }
 
 int main(int argc, const char * argv[]) {
@@ -67,7 +92,7 @@ int main(int argc, const char * argv[]) {
   vector<string> list_of_strings = {"the", "day", "is", "sunny", "the", "the",
      "the", "sunny", "is", "is"
   };
-  vector<string> result = S.topKFrequent(list_of_strings, 2);
+  vector<string> result = S.topKFrequent(list_of_strings, 4);
   for (auto s : result) {
     cout << s << '\n';
   }
