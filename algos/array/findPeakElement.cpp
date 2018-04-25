@@ -14,7 +14,9 @@ class Solution
 //one of the peaks is fine.
 //Input: nums = [1, 2, 3, 1]
 //Output: 2 because 2 is the index of 3
-//Assumption is that the array size is at least 3
+//The geeks for geeks has a slightly different definition, it says peak
+//number as the which is not lesser than its neighbors. It also has a
+//O(lon(n)) algorithm
 int Solution::findPeakElement(vector<int> &nums)
 {
   int peak_index = 0;
