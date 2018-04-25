@@ -23,6 +23,9 @@ bool Solution::are_n_queens_valid(vector<vector<char>> & chess_board) {
   int board_size = chess_board[0].size();
   vector<bool> queen_rows(board_size, false);
   vector<bool> queen_cols(board_size, false);
+  //Initially I thought of using unordered_set<pair<int, int>> for not_allowed_cells
+  //but found out that c++ doesn't allow it because a hash of pair<int, int> doesn't 
+  //make sense
   set<pair<int, int>> not_allowed_cells;
   vector<pair<int, int>> queen_positions;
   
