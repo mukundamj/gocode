@@ -12,8 +12,6 @@ struct UndirectedGraphNode
   UndirectedGraphNode(int x) : label(x) {};
 };
 
-//This code does the same job as the other clone graph code but uses iterative
-//approach instead of recursive approach
 class Solution
 {
   public:
@@ -21,6 +19,8 @@ class Solution
     void print_graph(UndirectedGraphNode *node);
 };
 
+//The logic I implemedted before used a recursive approach but the below
+//approach uses iteration.
 UndirectedGraphNode *Solution::cloneGraph(UndirectedGraphNode *node)
 {
   unordered_map<int, UndirectedGraphNode*> map_cloned_nodes;
