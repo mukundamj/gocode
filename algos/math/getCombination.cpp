@@ -19,7 +19,7 @@ vector<string> Solution::getCombinations(string &s) {
 void Solution::getCombinations(string &s, int start, int end, vector<string> &combinations) {
   if (start == end) {
     combinations.push_back("");
-    combinations.push_back(s.substr(start, 1));
+    combinations.push_back(s[end]);
     return;
   }
   getCombinations(s, start + 1, end, combinations);
