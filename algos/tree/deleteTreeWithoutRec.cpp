@@ -14,12 +14,11 @@ struct TreeNode
 class Solution 
 {
   public:
-    bool delete_tree_without_recursion(TreeNode **root);
-    bool delete_tree_without_recursion(TreeNode *root);
+    bool delete_tree_without_recursion(TreeNode *&root);
     void print_tree(TreeNode *root);
 };
 
-bool Solution::delete_tree_without_recursion(TreeNode *root)
+bool Solution::delete_tree_without_recursion(TreeNode *&root)
 {
   if (!root) return true;
   vector<TreeNode *> queue; 
@@ -34,13 +33,7 @@ bool Solution::delete_tree_without_recursion(TreeNode *root)
     delete temp;
   }
 
-  return true;
-}
-
-bool Solution::delete_tree_without_recursion(TreeNode **root)
-{
-  delete_tree_without_recursion(*root);
-  *root = NULL;
+  root = NULL;
   return true;
 }
 
@@ -65,7 +58,7 @@ int main(int argc, const char *argv[])
   r->right->right = new TreeNode(7);
   cout << "Tree before deleting\n";
   S.print_tree(r);
-  if (S.delete_tree_without_recursion(&r))
+  if (S.delete_tree_without_recursion(r))
   {
     cout << "Tree was successfully deleted " ;
   }
