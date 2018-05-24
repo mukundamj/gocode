@@ -14,9 +14,9 @@ using namespace std;
 
 bool arabic_to_roman_num(long num)
 {
-  vector<string> units = {"", "I", "II", "III", "IV", "V" "VI", "VII", "VIII", "IX"};
-  vector<string> tens = {"", "X", "XX", "XXX", "XL", "L" "LX", "LXX", "LXXX", "XC"};
-  vector<string> hundreds = {"", "C", "CC", "CCC", "CD", "D" "DC", "DCC", "DCCC", "CM"};
+  vector<string> units = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+  vector<string> tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+  vector<string> hundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
 
   string roman_num;
   int place = 1;
