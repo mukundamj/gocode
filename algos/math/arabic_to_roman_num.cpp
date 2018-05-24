@@ -1,16 +1,34 @@
-/*
-  Assumptions:
-  Roman numerals only support whole numbers >= 1
-  For large numbers no special format like Apostrophus or Vinculum is used. The
-  data type for the input arabic number is long, on a compiler which allocates 4 
-  bytes for long this program can handle a maximum value of 4,294,967,295.
-*/
-
 #include <iostream>
 #include <vector>
-#include <string>
+#include <fstream>
 
 using namespace std;
+
+void print_roman(string &roman_num)
+{
+  if (roman_num.size() <= 100)
+  { 
+    cout << "The Roman number format for the input is : ";
+    cout << roman_num << "\n";
+  }
+  else
+  {
+    cout << "The Roman number format has larger than 100 characters, hence writing\n";
+    cout << "the output to the file roman_num.txt\n";
+    ofstream file_to_write("roman_num.txt");
+    if (file_to_write.is_open())
+    {
+      file_to_write << roman_num; 
+      file_to_write.close();
+      cout << "Completed writing to roman_num.txt\n";
+    }
+    else
+    {
+      cout << "Unable to open the file roman_num.txt for writing\n";
+    }
+  }
+  return;
+}
 
 bool arabic_to_roman_num(long num)
 {
@@ -50,44 +68,41 @@ bool arabic_to_roman_num(long num)
     place *= 10;
   }
   
-  cout << "The Roman number format for the input is :\n";
-  cout << roman_num << "\n";
+  print_roman(roman_num); 
   return true;
 }
 
-int main(int argc, const char * argv[])
+void print_about()
 {
   string ABOUT = "";
   ABOUT += "\nThis program converts input numbers in Arabic format to Roman. To run\n";
-  ABOUT += "this program execute the command ./arabic_to_roman_num. The program will\n";
-  ABOUT += "ask you to input a number >= 1 without commas in Arabic format, if the\n";
-  ABOUT += "number is not in proper arabic format the program will throw an error.\n";
-  ABOUT += "\n";
-  ABOUT += "Assumptions:\n";
-  ABOUT += "Roman numerals only support whole numbers >= 1. For large numbers no\n";
-  ABOUT += "no special format like Apostrophus or Vinculum is used. The data type for\n";
-  ABOUT += "the input arabic number is long, on a compiler which allocates 4 bytes for\n"; 
-  ABOUT += "long this program can support a maximum value of 4,294,967,295.\n";
+  ABOUT += "\nthis program execute the command ./arabic_to_roman_num. The program will\n";
+  ABOUT += "\nask you to input a number >= 1 without commas in Arabic format, if the\n";
+  ABOUT += "\nnumber is not in proper arabic format the program will throw an error.\n";
+  ABOUT += "\nAssumptions:\n";
+  ABOUT += "\nRoman numerals only support whole numbers >= 1. For large numbers no\n";
+  ABOUT += "\nspecial format like Apostrophus or Vinculum is used. The data type for\n";
+  ABOUT += "\nthe input arabic number is long, on a compiler which allocates 4 bytes for\n"; 
+  ABOUT += "\nlong this program can support a maximum value of 4,294,967,295.\n";
 
+  cout << "\n################################################################\n";
+  cout << ABOUT;
+  cout << "\n################################################################\n";
+  
+  return;
+}
 
-  if (argc == 2 && argv[0] != NULL && argv[1] != NULL)
-  {
-    string arg2 = argv[1];
-    if (arg2 == "-h")
-    {
-      cout << "################################################################\n";
-      cout << ABOUT;
-      cout << "\n################################################################\n\n";
-      return 0;
-    }
-  }
-
-  cout << "\n";
-  cout << "################################################################\n";
+void print_input_instructions()
+{
+  cout << "\n################################################################\n";
   cout << "\nRunning the Program for converting Arabic number to Roman\n";
-  cout << "\nEnter the Arabic number(without commas) to be converted to Roman\n";
-  cout << "Enter 0 to quit the program\n";
+  cout << "\nEnter the Arabic number between 1 and 4,294,967,295(without commas)\n";
+  cout << "\nto be converted to Roman. Enter 0 to quit the program\n";
+  return;
+}
 
+long get_arabic_num()
+{
   while (1)
   {
     long num;
@@ -96,14 +111,40 @@ int main(int argc, const char * argv[])
     {
       std::cin.clear();
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-      cerr << "Please enter a valid Arabic number. The input cannot contain\n";
-      cerr << "any number other than 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 and the \n";
-      cerr << "number should be >= 1 \n";
+      cerr << "\nPlease enter a number between 1 and 4,294,967,295 without commas\n";
+      cerr << "\nor 0 to quit\n";
     }
-    else if (num == 0)
+    else return num;
+  }
+}
+
+void print_quit_msg()
+{
+  cout << "\nQuitting the program\n";
+  cout << "\n################################################################\n";
+  return;
+}
+
+int main(int argc, const char * argv[])
+{
+  if (argc == 2 && argv[0] != NULL && argv[1] != NULL)
+  {
+    string arg2 = argv[1];
+    if (arg2 == "-h")
     {
-      cout << "\nQuitting the program\n";
-      cout << "################################################################\n";
+      print_about();
+      return 0;
+    }
+  }
+
+  print_input_instructions();
+
+  while (1)
+  {
+    long num = get_arabic_num();
+    if (num == 0)
+    {
+      print_quit_msg();
       return 0;
     }
     else
