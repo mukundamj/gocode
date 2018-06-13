@@ -20,7 +20,8 @@ class Solution {
             string::iterator it = str.begin();
             while (it != str.end()) {
               cout << "chunk = " << chunk << " " << str << " " << *it << endl;
-              if (!((*it >= 48 && *it <= 57) || (*it >= 65 && *it <= 70) || (*it >= 97 && *it <= 102))) return ret = "Neither";
+              //if (!((*it >= 48 && *it <= 57) || (*it >= 65 && *it <= 70) || (*it >= 97 && *it <= 102))) return ret = "Neither";
+              if (!((*it >= '0' && *it <= '9') || (*it >= 'A' && *it <= 'F') || (*it >= 'a' && *it <= 'f'))) return ret = "Neither";
               ++it;
             }
             ++chunk;
@@ -44,7 +45,8 @@ class Solution {
             cout << "chunk = " << chunk << " " << str << endl;
             int num = 0;
             while (it != str.end()) { 
-              if (!(*it >= 48 && *it <= 57)) return ret = "Netiher"; 
+              //if (!(*it >= 48 && *it <= 57)) return ret = "Netiher"; 
+              if (!(*it >= '0' && *it <= '9')) return ret = "Netiher";
               num = num * 10 + (*it++ - 48);
             }
             cout << "num: " << num << endl;
