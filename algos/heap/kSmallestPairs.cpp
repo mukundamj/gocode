@@ -17,7 +17,11 @@ struct comparePairsForQueue {
   }
   vector<int> &_nums1, &_nums2;
 };
-
+/*
+You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.
+Define a pair (u,v) which consists of one element from the first array and one element from the second array.
+Find the k pairs (u1,v1),(u2,v2) ...(uk,vk) with the smallest sums. 
+*/
 vector<pair<int, int>> Solution::kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
   vector<pair<int, int>> result;
   if (nums1.empty() || nums2.empty() || k <= 0) return result;

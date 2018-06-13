@@ -12,6 +12,7 @@ struct TreeNode {
 
 class Solution {
   public:
+    //Given a binary tree, return all root-to-leaf paths
     vector<string> binaryTreePaths(TreeNode*);
     void binaryTreePaths(TreeNode*, string, vector<string> &);
 };

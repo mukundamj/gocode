@@ -80,7 +80,7 @@ void WordDictionary::_freeWordDictionary(TrieNode* r) {
   for (int i = 0; i < (sizeof(r->next)/sizeof(TrieNode*)); i++) {
     if (r->next[i] != NULL) {
       _freeWordDictionary(r->next[i]);
-      free(r->next[i]);
+      delete r->next[i];
     }
   }
   return;

@@ -52,6 +52,7 @@ vector<int> Solution::countSmaller(vector<int>& nums) {
   return result;
 }
 
+//For each index of the input array count the number of values to the right which is less than itself  
 int main(int argc, const char * argv[]) {
   Solution S;
   vector<int> nums = {6, 4, 1, 8, 7, 5, 2, 9};

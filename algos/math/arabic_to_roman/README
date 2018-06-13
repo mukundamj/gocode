@@ -1,0 +1,136 @@
+
+################################################################
+About the program:
+
+This program converts input numbers in Arabic format to Roman. To run
+this program execute the command ./convert_arabic_to_roman. The program
+asks you to input a number >= 1 without commas in Arabic format, if the
+
+Assumptions:
+Roman numerals only support whole numbers >= 1. For large numbers no
+special format like Apostrophus or Vinculum is used. The data type for
+the input arabic number is long, on a compiler which allocates 4 bytes for
+long this program can support a maximum value of 4,294,967,295.
+################################################################
+
+
+################################################################
+Compiling instructions
+
+1. Copy the folder arabic_to_roman onto your machine
+2. Go into this directory by running the following command
+   cd arabic_to_roman
+3. Inside the arabic_to_roman directory run the below command 
+   g++ -std=c++11 *.cpp -o convert_arabic_to_roman
+################################################################
+
+
+################################################################
+Run instructions
+
+1. To print the help message run the below command
+   ./convert_arabic_to_roman -h
+2. To execute the program run the below command
+   ./convert_arabic_to_roman 
+################################################################
+
+
+################################################################
+Example
+   
+  1. Command: ./convert_arabic_to_roman -h
+    ################################################################
+    
+    This program converts input numbers in Arabic format to Roman. To run
+    
+    this program execute the command ./convert_arabic_to_roman. The program
+    
+    asks you to input a number >= 1 without commas in Arabic format, if the
+    
+    number is not in proper Arabic format the program will throw an error.
+    
+    Assumptions:
+    
+    Roman numerals only support whole numbers >= 1. For large numbers no
+    
+    special format like Apostrophus or Vinculum is used. The data type for
+    
+    the input arabic number is long, on a compiler which allocates 4 bytes for
+    
+    long this program can support a maximum value of 4,294,967,295.
+    
+    ################################################################
+
+  2. Command: ./convert_arabic_to_roman
+    Running the Program for converting Arabic number to Roman. Enter
+
+    the Arabic number between 1 and 4,294,967,295(without commas). To
+
+    conver a list of Arbic numbers to Roman enter them them in space
+
+    separated format. Enter 0 to quit the program
+
+    123
+    The Roman number format for the input is : CXXIII
+
+    999
+    The Roman number format for the input is : CMXCIX
+
+    1 2 3 4 5 6 7 8 9 10 11 22 33 44 55 66 77 88 99 100
+    The Roman number format for the input is : I
+    The Roman number format for the input is : II
+    The Roman number format for the input is : III
+    The Roman number format for the input is : IV
+    The Roman number format for the input is : V
+    The Roman number format for the input is : VI
+    The Roman number format for the input is : VII
+    The Roman number format for the input is : VIII
+    The Roman number format for the input is : IX
+    The Roman number format for the input is : X
+    The Roman number format for the input is : XI
+    The Roman number format for the input is : XXII
+    The Roman number format for the input is : XXXIII
+    The Roman number format for the input is : XLIV
+    The Roman number format for the input is : LV
+    The Roman number format for the input is : LXVI
+    The Roman number format for the input is : LXXVII
+    The Roman number format for the input is : LXXXVIII
+    The Roman number format for the input is : XCIX
+    The Roman number format for the input is : C
+
+    111 222 333 444 555 666 777 888 999
+    The Roman number format for the input is : CXI
+    The Roman number format for the input is : CCXXII
+    The Roman number format for the input is : CCCXXXIII
+    The Roman number format for the input is : CDXLIV
+    The Roman number format for the input is : DLV
+    The Roman number format for the input is : DCLXVI
+    The Roman number format for the input is : DCCLXXVII
+    The Roman number format for the input is : DCCCLXXXVIII
+    The Roman number format for the input is : CMXCIX
+
+    1000 1111 2222 3333 4444 5555 6666 7777 8888 9999
+    The Roman number format for the input is : M
+    The Roman number format for the input is : MCXI
+    The Roman number format for the input is : MMCCXXII
+    The Roman number format for the input is : MMMCCCXXXIII
+    The Roman number format for the input is : MMMMCDXLIV
+    The Roman number format for the input is : MMMMMDLV
+    The Roman number format for the input is : MMMMMMDCLXVI
+    The Roman number format for the input is : MMMMMMMDCCLXXVII
+    The Roman number format for the input is : MMMMMMMMDCCCLXXXVIII
+    The Roman number format for the input is : MMMMMMMMMCMXCIX
+
+    -1
+
+    Please enter a number between 1 and 4,294,967,295 without commas
+
+    or 0 to quit
+
+    0
+
+    Quitting the program
+
+    ################################################################
+
+################################################################

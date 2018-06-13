@@ -31,6 +31,9 @@ class Solution {
 */
 
 /******Time complexity is O(n + nlogn)***********/
+  
+//Given a list of 24-hour clock time points in "Hour:Minutes" format, find the minimum minutes difference 
+//between any two time points in the list. 
   public:
     int findMinDifference(vector<string>& timePoints) {
       int minDiff = 10000;
@@ -48,9 +51,9 @@ class Solution {
 
   private:
     int _findDiff(const char * A, const char * B) {
-      int secondsA = (((A[0] - '0') * 10 + (A[1] - '0')) * 60) + ((A[3] - '0') * 10 + (A[4] - '0'));
-      int secondsB = (((B[0] - '0') * 10 + (B[1] - '0')) * 60) + ((B[3] - '0') * 10 + (B[4] - '0'));
-      int delta = (secondsA - secondsB);
+      int minutesA = (((A[0] - '0') * 10 + (A[1] - '0')) * 60) + ((A[3] - '0') * 10 + (A[4] - '0'));
+      int minutesB = (((B[0] - '0') * 10 + (B[1] - '0')) * 60) + ((B[3] - '0') * 10 + (B[4] - '0'));
+      int delta = (minutesA - minutesB);
       return  delta > 720 ? (1440 - delta) : delta;
     }
 

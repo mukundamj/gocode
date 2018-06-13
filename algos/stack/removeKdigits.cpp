@@ -8,6 +8,8 @@ class Solution {
     string removeKdigits(string, int); 
 };
 
+//Given a non-negative integer num represented as a string, remove k digits from the number so that 
+//the new number is the smallest possible. 
 string Solution::removeKdigits(string num, int k) {
   string ans = "";
   for (auto c : num) {
