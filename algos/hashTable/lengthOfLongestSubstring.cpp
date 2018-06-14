@@ -32,6 +32,31 @@ int Solution::lengthOfLongestSubstring(string s) {
   return max;
 }
 
+/*
+My easier solution
+    int lengthOfLongestSubstring(string s) {
+        if (!s.size()) return 0;
+        int b = 0, e = 1, longest = 0;
+        vector<int> map_s(255, 0);
+        map_s[s[b]]++;
+        while (e < s.size()){
+            map_s[s[e]]++;
+            if (map_s[s[e]] > 1){
+                longest = max(longest, e - b);
+                while (map_s[s[b]] == 1){
+                    map_s[s[b]]--;
+                    b++;
+                }
+                map_s[s[b]]--;
+                b++;
+            }
+            e++;
+        }
+        longest = max(longest, e - b);
+        return longest;
+    }
+*/
+
 
 int main(int argc, const char* argv[]) {
   Solution S;
