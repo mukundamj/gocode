@@ -107,6 +107,13 @@ void robot::turn_left()
   direction_idx = (direction_idx == 0) ? 3 : (direction_idx - 1);
 }
 
+/*
+This function is called when the robot starts cleaning so all 4 directions are checked.
+This function inturn calls another recursive function dfs_clean wherein only 3 direction
+are recursively cleaned, the 4th direction is not required to be cleaned because that
+is the direction in which the robot came in after cleaning. Run the code to see the
+dfs travesal in the outpit
+*/
 void robot::clean_the_house(vector<vector<char>> &house)
 {
   printf("r = %d, c = %d ", current_pos.first, current_pos.second);
@@ -188,13 +195,13 @@ int main(int argc, const char* argv[])
   vector<vector<char>> house = {
     {'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'},
     {'w', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'w'},
-    {'w', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'w'},
-    {'w', 'd', 'd', 'w', 'w', 'd', 'w', 'd', 'd', 'w'},
-    {'w', 'd', 'd', 'w', 'w', 'd', 'w', 'd', 'd', 'w'},
-    {'w', 'd', 'd', 'w', 'w', 'd', 'w', 'd', 'd', 'w'},
-    {'w', 'd', 'd', 'w', 'w', 'd', 'w', 'd', 'd', 'w'},
-    {'w', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'w'},
-    {'w', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'w'},
+    {'w', 'd', 'd', 'd', 'd', 'w', 'w', 'd', 'd', 'w'},
+    {'w', 'd', 'w', 'w', 'w', 'd', 'w', 'd', 'd', 'w'},
+    {'w', 'd', 'd', 'w', 'w', 'd', 'w', 'w', 'w', 'w'},
+    {'w', 'd', 'd', 'w', 'w', 'd', 'w', 'd', 'w', 'w'},
+    {'w', 'd', 'd', 'w', 'w', 'd', 'w', 'd', 'w', 'w'},
+    {'w', 'd', 'w', 'd', 'd', 'd', 'w', 'd', 'w', 'w'},
+    {'w', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'w', 'w'},
     {'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'},
   };
 
