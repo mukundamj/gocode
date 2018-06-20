@@ -3,17 +3,18 @@
 
   class robot {
     bool move_front();
+    void move_back();
     void turn_right();
     void turn_left();
   }
 
-  The move function tries to move the cleaning robot by 1 step, if there is any obstruction
+  The move_front function tries to move the cleaning robot by 1 step, if there is any obstruction
   because of which the cleaning robot couldn't move the function returns false else
   it returns true. The turn right/left function turns the root by 90 degrees in
   clockwise/anticlockwise deirection.
 
   The objective is to clean the entire house using those functions. You can assume that
-  the house is made up of uniform grids, a move function will move the robot by 1 grid.
+  the house is made up of uniform grids, a move_front/back function will move the robot by 1 grid.
   Assume that the house has all kinds of usual obstructions like furniture, walls etc.  
 
   Calculate the time complexity and think about scaling problem.
@@ -34,7 +35,7 @@ class robot {
     void dfs_scan(vector<vector<char>> &house);
 
     /*
-    When this method is called the robot will move by 1 step and returns a true.
+    When the move_front() method is called the robot will move by 1 step and returns a true.
     If the robot couldn't move because of an obstruction the move function will
     return false. In the real world use case move function need not have house
     layout as input argument, a sensor in the robot can detect collision and
@@ -42,7 +43,7 @@ class robot {
     */
     
     bool move_front(vector<vector<char>> &house);
-    bool move_back();
+    void move_back();
 
     //When this function is called the robot will turn right by 90 deg
     void turn_right();
@@ -87,13 +88,18 @@ bool robot::move_front(vector<vector<char>> &house)
   return true;
 }
 
-bool robot::move_back()
+/*
+  Since move_back() is only used to go back to the grid where it came from
+  move_back will always be successful hence the function need not return true 
+  or false. 
+*/
+void robot::move_back()
 {
   pair<int, int> new_pos;
   new_pos.first = current_pos.first - directions[direction_idx].first;
   new_pos.second = current_pos.second - directions[direction_idx].second;
   current_pos = new_pos;
-  return true;
+  return;
 }
 
 
@@ -111,8 +117,13 @@ void robot::turn_left()
 This function is called when the robot starts cleaning so all 4 directions are checked.
 This function inturn calls another recursive function dfs_clean wherein only 3 direction
 are recursively cleaned, the 4th direction is not required to be cleaned because that
-is the direction in which the robot came in after cleaning. Run the code to see the
+is the direction from which the robot came after cleaning. Run the code to see the
 dfs travesal in the outpit
+
+Time complexity calculation:
+  Number of visits for each grid: 1 while entering the grid and 3 checks to to see 
+  if 3 adjacent grids are cleaned. So time complexity = O(4n) = O(n), where n is
+  number of grids
 */
 void robot::clean_the_house(vector<vector<char>> &house)
 {
