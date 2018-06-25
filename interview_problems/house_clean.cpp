@@ -121,9 +121,10 @@ is the direction from which the robot came after cleaning. Run the code to see t
 dfs travesal in the outpit
 
 Time complexity calculation:
-  Number of visits for each grid: 1 while entering the grid and 3 checks to to see 
-  if 3 adjacent grids are cleaned. So time complexity = O(4n) = O(n), where n is
-  number of grids
+  Let's say in each grid we do k operations which include one or more of turn_right(),
+  turn_left(), move_front() and move_back() so worst case time complexity is O(n) = 
+  k x N, where N is number of grids in the house and k is a constant, hence O(n) is
+  linear.
 */
 void robot::clean_the_house(vector<vector<char>> &house)
 {
