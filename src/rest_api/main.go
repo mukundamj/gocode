@@ -52,7 +52,7 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
       return
     }
   }
-  json.NewEncoder(w).Encode(&Products{})
+  json.NewEncoder(w).Encode(&Product{})
 }
 
 func CreateProduct(w http.ResponseWriter, r *http.Request) {
