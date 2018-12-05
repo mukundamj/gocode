@@ -1,119 +1,84 @@
 package mystore
 
 import (
-	"fmt"
-	//"log"
-	"gopkg.in/mgo.v2"
-	//"strings"
-	//"gopkg.in/mgo.v2/bson"
+  //"fmt"
+  "gopkg.in/mgo.v2"
+  "log"
+  //"gopkg.in/mgo.v2/bson"
+  //"strings"
 )
 
-//Repository ...
-type Repository struct{}
-
-// SERVER the DB server
+type Storage struct{}
 const SERVER = "mongodb://127.0.0.1:27017"
-
-// DBNAME the name of the DB instance
 const DBNAME = "MyProducts"
-
-// COLLECTION is the name of the collection in DB
 const COLLECTION = "Products"
 
-var productId = 10;
+var productId = 3;
 
-// GetProducts returns the list of Products
-func (r Repository) GetProducts() Products {
-	session, err := mgo.Dial(SERVER)
-
-	if err != nil {
-		fmt.Println("Failed to establish connection to Mongo server:", err)
-	}
-
-	defer session.Close()
-
-	c := session.DB(DBNAME).C(COLLECTION)
-	results := Products{}
-
-	if err := c.Find(nil).All(&results); err != nil {
-		fmt.Println("Failed to write results:", err)
-	}
-
-        fmt.Println("Fetched data from db")
-	return results
+func (s Storage) GetProducts() Products {
+  session, err := mgo.Dial(SERVER)
+  if err != nil {
+    log.Println("Connection to Mongo server couldn't be established:", err)
+  }
+  defer session.Close()
+  c := session.DB(DBNAME).C(COLLECTION)
+  allProducts := Products{}
+  if err := c.Find(nil).All(&allProducts); err != nil {
+    log.Println("Failed to write allProducts:", err)
+  }
+  log.Println("Fetched all products data from db")
+  return allProducts
 }
 
-/*
-// GetProductById returns a unique Product
-func (r Repository) GetProductById(id int) Product {
-	session, err := mgo.Dial(SERVER)
-
-	if err != nil {
-	 	fmt.Println("Failed to establish connection to Mongo server:", err)
-	}
-
-	defer session.Close()
-
-	c := session.DB(DBNAME).C(COLLECTION)
-	var result Product
-
-	fmt.Println("ID in GetProductById", id);
-
-	if err := c.FindId(id).One(&result); err != nil {
-	  	fmt.Println("Failed to write result:", err)
-	}
-
-	return result
+func (s Storage) GetProductById(id int) Product {
+  session, err := mgo.Dial(SERVER)
+  if err != nil {
+    log.Println("Connection to Mongo server couldn't be established:", err)
+  }
+  defer session.Close()
+  c := session.DB(DBNAME).C(COLLECTION)
+  var aProduct Product
+  if err := c.FindId(id).One(&aProduct); err != nil {
+    log.Println("Failed to write aProduct:", err)
+  }
+  log.Println("Fetched a product by ID from db")
+  return aProduct
 }
 
-// AddProduct adds a Product in the DB
-func (r Repository) AddProduct(product Product) bool {
-	session, err := mgo.Dial(SERVER)
-	defer session.Close()
-
-	productId += 1
-	product.ID = productId
-	session.DB(DBNAME).C(COLLECTION).Insert(product)
-	if err != nil {
-		log.Fatal(err)
-		return false
-	}
-
-	fmt.Println("Added New Product ID- ", product.ID)
-
-	return true
+func (s Storage) UpdateProduct(product Product) bool {
+  session, err := mgo.Dial(SERVER)
+  defer session.Close()
+  err = session.DB(DBNAME).C(COLLECTION).UpdateId(product.ID, product)
+  if err != nil {
+    log.Fatal(err)
+    return false
+  }
+  log.Println("Product updated for the ID - ", product.ID)
+  return true
 }
 
-// UpdateProduct updates a Product in the DB
-func (r Repository) UpdateProduct(product Product) bool {
-	session, err := mgo.Dial(SERVER)
-	defer session.Close()
-
-	err = session.DB(DBNAME).C(COLLECTION).UpdateId(product.ID, product)
-	
-	if err != nil {
-		log.Fatal(err)
-		return false
-	}
-
-	fmt.Println("Updated Product ID - ", product.ID)
-
-	return true
+func (s Storage) AddProduct(product Product) bool {
+  session, err := mgo.Dial(SERVER)
+  defer session.Close()
+  productId += 1
+  product.ID = productId
+  session.DB(DBNAME).C(COLLECTION).Insert(product)
+  if err != nil {
+    log.Fatal(err)
+    return false
+  }
+  log.Println("A Product added to the database having ID - ", product.ID)
+  return true
 }
 
-// DeleteProduct deletes an Product
-func (r Repository) DeleteProduct(id int) string {
-	session, err := mgo.Dial(SERVER)
-	defer session.Close()
+func (s Storage) DeleteProduct(id int) string {
+  session, err := mgo.Dial(SERVER)
+  defer session.Close()
+  if err = session.DB(DBNAME).C(COLLECTION).RemoveId(id); err != nil {
+    log.Fatal(err)
+    return "INTERNAL ERR"
+  }
 
-	// Remove product
-	if err = session.DB(DBNAME).C(COLLECTION).RemoveId(id); err != nil {
-		log.Fatal(err)
-		return "INTERNAL ERR"
-	}
-
-	fmt.Println("Deleted Product ID - ", id)
-	// Write status
-	return "OK"
+  log.Println("A product deleted from db having ID - ", id)
+  return "OK"
 }
-*/

@@ -1,74 +1,72 @@
 package mystore
 
 import (
-    "log"
-    "net/http"
-    "github.com/gorilla/mux"
+  "net/http"
+  //"log"
+  "github.com/gorilla/mux"
 )
 
-var controller = &Controller{Repository: Repository{}}
+var controller = &Controller{Storage: Storage{}}
 
-// Route defines a route
 type Route struct {
-    Name        string
-    Method      string
-    Pattern     string
-    HandlerFunc http.HandlerFunc
+  Name        string
+  Method      string
+  Pattern     string
+  HandlerFunc http.HandlerFunc
 }
 
-// Routes defines the list of routes of our API
 type Routes []Route
 
 var routes = Routes {
-    Route {
-        "Index",
-        "GET",
-        "/",
-        controller.Index,
-    },
-/*
-    Route {
-        "AddProduct",
-        "POST",
-        "/AddProduct",
-        controller.AddProduct,
-    },
-    Route {
-        "UpdateProduct",
-        "PUT",
-        "/UpdateProduct",
-        controller.UpdateProduct,
-    },
-    // Get Product by {id}
-    Route {
-        "GetProduct",
-        "GET",
-        "/products/{id}",
-        controller.GetProduct,
-    },
-    // Delete Product by {id}
-    Route {
-        "DeleteProduct",
-        "DELETE",
-        "/deleteProduct/{id}",
-        controller.DeleteProduct,
-    },
-*/
+  Route {
+    "AllProducts",
+    "GET",
+    "/tenant/products",
+    controller.AllProducts,
+  },
+
+  Route {
+    "GetProductById",
+    "GET",
+    "/tenant/product/{id}",
+    controller.GetProductById,
+  },
+
+  Route {
+    "UpdateProduct",
+    "PUT",
+    "/tenant/product/{id}",
+    controller.UpdateProduct,
+  },
+
+  Route {
+    "AddProduct",
+    "POST",
+    "/tenant/product",
+    controller.AddProduct,
+  },
+
+
+  Route {
+    "DeleteProduct",
+    "DELETE",
+    "/tenant/product/{id}",
+    controller.DeleteProduct,
+  },
 }
 
-// NewRouter configures a new router to the API
 func NewRouter() *mux.Router {
-    router := mux.NewRouter().StrictSlash(true)
-    for _, route := range routes {
-        var handler http.Handler
-        log.Println(route.Name)
-        handler = route.HandlerFunc
+  router := mux.NewRouter().StrictSlash(true)
+  for _, route := range routes {
+    var handler http.Handler
+    //log.Println(route.Name)
+    handler = route.HandlerFunc
 
-        router.
-         Methods(route.Method).
-         Path(route.Pattern).
-         Name(route.Name).
-         Handler(handler)
-    }
-    return router
+    router.
+      Methods(route.Method).
+      Path(route.Pattern).
+      Name(route.Name).
+      Handler(handler)
+  }
+  return router
 }
