@@ -1,11 +1,7 @@
 package mystore
 
-//type Exception struct {
-//    Message string `json:"message"`
-//}
-
 type Product struct {
-  ID int `bson:"_id"`
+  ID int `json:"id"`
   Name string `json:"name,omitempty"`
   Description string `json:"description,omitempty"`
   Category string `json:"category,omitempty"`

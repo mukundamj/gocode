@@ -1,11 +1,8 @@
 package mystore
 
 import (
-  //"fmt"
   "gopkg.in/mgo.v2"
   "log"
-  //"gopkg.in/mgo.v2/bson"
-  //"strings"
 )
 
 type Storage struct{}
@@ -39,9 +36,8 @@ func (s Storage) GetProductById(id int) Product {
   c := session.DB(DBNAME).C(COLLECTION)
   var aProduct Product
   if err := c.FindId(id).One(&aProduct); err != nil {
-    log.Println("Failed to write aProduct:", err)
+    log.Println("Failed to get product. Err :", err)
   }
-  log.Println("Fetched a product by ID from db")
   return aProduct
 }
 

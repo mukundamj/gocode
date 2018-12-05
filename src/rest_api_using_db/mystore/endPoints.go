@@ -32,10 +32,19 @@ func (c *Controller) GetProductById(w http.ResponseWriter, r *http.Request) {
   id := vars["id"]
   productid, err := strconv.Atoi(id);
   if err != nil {
-    log.Fatalln("Error GetProduct", err)
+    log.Println("Product ID should be an integer. Err : ", err)
+    w.WriteHeader(http.StatusBadRequest)
+    return
   }
   product := c.Storage.GetProductById(productid)
   data, _ := json.Marshal(product)
+
+  if product.Name == "" {
+    w.WriteHeader(http.StatusBadRequest)
+    log.Println("Product doesn't exist")
+    return
+  }
+
   w.WriteHeader(http.StatusOK)
   w.Write(data)
   log.Println("Product for an id returned for the endpoint /tenant/product/{id}")
@@ -59,11 +68,14 @@ func (c *Controller) UpdateProduct(w http.ResponseWriter, r *http.Request) {
   if err := json.Unmarshal(body, &product); err != nil {
     w.Header().Set("Content-Type", "application/json; charset=UTF-8")
     w.WriteHeader(422) // unprocessable entity
-    if err := json.NewEncoder(w).Encode(err); err != nil {
-      log.Fatalln("Error UpdateProduct unmarshalling data", err)
-      w.WriteHeader(http.StatusInternalServerError)
-      return
-    }
+    log.Println("json unmarshall error : ", err)
+    return
+  }
+
+  if product.Name == "" {
+    w.WriteHeader(http.StatusBadRequest)
+    log.Println("Product name cannot be empty")
+    return
   }
 
   log.Println("Product ID is: ", product.ID)
@@ -81,7 +93,7 @@ func (c *Controller) UpdateProduct(w http.ResponseWriter, r *http.Request) {
 func (c *Controller) AddProduct(w http.ResponseWriter, r *http.Request) {
   log.Println("Begin processing endpoint /tenant/product/{id} for POST method")
   var product Product
-  body, err := ioutil.ReadAll(io.LimitReader(r.Body, 4096))
+  body, err := ioutil.ReadAll(io.LimitReader(r.Body, 512))
 
   if err != nil {
     log.Fatalln("Error in endpoint /tenant/product/{id} for POST method", err)
@@ -94,16 +106,17 @@ func (c *Controller) AddProduct(w http.ResponseWriter, r *http.Request) {
   }
 
   if err := json.Unmarshal(body, &product); err != nil {
-    w.WriteHeader(422) // unprocessable entity
-    log.Println(err)
-    if err := json.NewEncoder(w).Encode(err); err != nil {
-      log.Fatalln("Error AddProduct unmarshalling data", err)
-      w.WriteHeader(http.StatusInternalServerError)
-      return
-    }
+    w.WriteHeader(422)
+    log.Println("Error parsing the json body", err)
+    return
   }
 
-  log.Println(product)
+  if product.Name == "" {
+    w.WriteHeader(http.StatusBadRequest)
+    log.Println("Product name cannot be empty")
+    return
+  }
+
   success := c.Storage.AddProduct(product)
   if !success {
       w.WriteHeader(http.StatusInternalServerError)

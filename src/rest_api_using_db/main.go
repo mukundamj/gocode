@@ -1,15 +1,11 @@
 package main
 
 import (
-  //"encoding/json"
   "log"
   "net/http"
-  //"github.com/gorilla/mux"
-  //"github.com/gorilla/handlers"
   "rest_api_using_db/mystore"
 )
 
-//Comment TODO
 func main() {
   //setup router
   router := mystore.NewRouter()
