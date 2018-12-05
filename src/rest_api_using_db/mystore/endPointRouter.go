@@ -35,7 +35,7 @@ var routes = Routes {
   Route {
     "UpdateProduct",
     "PUT",
-    "/tenant/product/{id}",
+    "/tenant/product",
     controller.UpdateProduct,
   },
 

@@ -13,7 +13,7 @@ const SERVER = "mongodb://127.0.0.1:27017"
 const DBNAME = "MyProducts"
 const COLLECTION = "Products"
 
-var productId = 3;
+var productId = 0;
 
 func (s Storage) GetProducts() Products {
   session, err := mgo.Dial(SERVER)
@@ -50,7 +50,8 @@ func (s Storage) UpdateProduct(product Product) bool {
   defer session.Close()
   err = session.DB(DBNAME).C(COLLECTION).UpdateId(product.ID, product)
   if err != nil {
-    log.Fatal(err)
+    log.Println("Product ID not found")
+    log.Println(err)
     return false
   }
   log.Println("Product updated for the ID - ", product.ID)
@@ -75,8 +76,9 @@ func (s Storage) DeleteProduct(id int) string {
   session, err := mgo.Dial(SERVER)
   defer session.Close()
   if err = session.DB(DBNAME).C(COLLECTION).RemoveId(id); err != nil {
-    log.Fatal(err)
-    return "INTERNAL ERR"
+    log.Println("Product ID not found")
+    log.Println(err)
+    return "400 BAD REQUEST"
   }
 
   log.Println("A product deleted from db having ID - ", id)
