@@ -1,0 +1,1298 @@
+{
+  "info": {
+    "_postman_id": "f72da067-f9ce-4d9c-ac09-4ffd3e8ee7ff",
+    "name": "RESTful service testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create a product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Phone\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 100,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Create a product with reduced json fields",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Phone\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 100,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Create a product without name",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Phone\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 100,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Create a product with increased json fields Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Phone\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 100,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Create a product without body",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 422\", function () {",
+              "    pm.response.to.have.status(422);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Create a product with big json body",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Should not process very big body\", function () {",
+              "    pm.response.to.have.status(422);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"ID\": 3,\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Create a product with invalid json",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Should not process very big body\", function () {",
+              "    pm.response.to.have.status(422);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"ID\": 3,\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Create a product with different json format body",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Should not process very big body\", function () {",
+              "    pm.response.to.have.status(422);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"ID\": 3,\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Create a product with {}",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 422\", function () {",
+              "    pm.response.to.have.status(422);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Get all products",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"All products should be returned\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/products",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "products"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Get all product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Invalid endpoint /tenant/product\", function () {",
+              "    pm.response.to.have.status(405);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Get a product with ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product",
+            "2"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Get a non existant product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Product doesn't exist\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product/1000",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product",
+            "1000"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Get a product without ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Cannot access a product without an ID\", function () {",
+              "    pm.response.to.have.status(405);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Get a product with ID = string",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Cannot use string for ID\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product/abc",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product",
+            "abc"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a product with valid ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"ID\" : 3,\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a product without id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 100,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a product without name",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 100,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a product with reduced fields",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"ID\" : 3,\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"price\": 102\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a product, with increased josn fields",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Update product by ignoring irrelevant keys\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"ID\" : 3,\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxx\",\n    \"invalid_filed\" : \"invalid\"\n}\n"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a non existant",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"ID\" : 1000,\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a product with ID = string",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Cannot update a product with ID = string\", function () {",
+              "    pm.response.to.have.status(422);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"ID\" : \"abc\",\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a product, invalid json format",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 422\", function () {",
+              "    pm.response.to.have.status(422);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"ID\" : \"abc\",\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxx\"\n"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Update a product, big json body",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Cannot update a product with very large json body\", function () {",
+              "    pm.response.to.have.status(422);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"ID\": 3,\n    \"name\": \"PhoneUpdatedNewNew\",\n    \"description\": \"desc\",\n    \"category\": \"mobile\",\n    \"price\": 500,\n    \"manufacturer\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\n}"
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a product with id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product",
+            "1"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a product without id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Status code is 405\", function () {",
+              "    pm.response.to.have.status(405); //Method not supported",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product"
+          ]
+        },
+        "description": "Get all products"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete prduct, id = string",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Invalid request\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product/abc",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product",
+            "abc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete non existing product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "46561647-7352-4433-9081-bfc0aef93547",
+            "exec": [
+              "pm.test(\"Cannot delete a non existant product\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:8000/tenant/product/1000",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "tenant",
+            "product",
+            "1000"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
