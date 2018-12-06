@@ -1,5 +1,5 @@
 {
-    "_id": 1,
+    "id": 1,
     "name": "iPhoneXs",
     "description": "The phone with elegant design",
     "category": "Smartphones",
@@ -10,7 +10,7 @@
 },
 
 {
-    "_id": 2,
+    "id": 2,
     "name": "iPadPro",
     "description": "Bigger than iPhone and smaller than MacBook",
     "category": "Tablets",
@@ -21,7 +21,7 @@
 },
 
 {
-    "_id": 3,
+    "id": 3,
     "name": "iPadMini",
     "description": "Bigger than iPhone and smaller than iPadPro",
     "category": "Tablets",
